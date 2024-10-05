@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Números - Jogo do Bicho</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="number"] {
+            padding: 10px;
+            width: 100%;
+            font-size: 1rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .resultado {
+            background-color: #eef2f5;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+
+        .resultado h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .grupo-selecao {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .grupo-selecao label {
+            background-color: #ddd;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .grupo-selecao input {
+            margin-right: 10px;
+        }
+
+        .histórico {
+            margin-top: 30px;
+        }
+
+        .histórico h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .histórico div {
+            background-color: #eef2f5;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .grupo-nome {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gerador de Números - Jogo do Bicho</h1>
+
+        <div class="card">
+            <div class="form-group">
+                <label for="quantidade">Quantidade de números a gerar:</label>
+                <input type="number" id="quantidade" min="1" max="100" value="4">
+            </div>
+
+            <div class="form-group">
+                <label for="digitos">Número de dígitos:</label>
+                <input type="number" id="digitos" min="1" max="10" value="4">
+            </div>
+
+            <div class="form-group">
+                <h2>Escolha os Grupos:</h2>
+                <div class="grupo-selecao">
+                    <label><input type="checkbox" value="1-4"> Avestruz <span class="grupo-nome">(01, 02, 03, 04)</span></label>
+                    <label><input type="checkbox" value="5-8"> Águia <span class="grupo-nome">(05, 06, 07, 08)</span></label>
+                    <label><input type="checkbox" value="9-12"> Burro <span class="grupo-nome">(09, 10, 11, 12)</span></label>
+                    <label><input type="checkbox" value="13-16"> Borboleta <span class="grupo-nome">(13, 14, 15, 16)</span></label>
+                    <label><input type="checkbox" value="17-20"> Cachorro <span class="grupo-nome">(17, 18, 19, 20)</span></label>
+                    <label><input type="checkbox" value="21-24"> Cabra <span class="grupo-nome">(21, 22, 23, 24)</span></label>
+                    <label><input type="checkbox" value="25-28"> Carneiro <span class="grupo-nome">(25, 26, 27, 28)</span></label>
+                    <label><input type="checkbox" value="29-32"> Camelo <span class="grupo-nome">(29, 30, 31, 32)</span></label>
+                    <label><input type="checkbox" value="33-36"> Cobra <span class="grupo-nome">(33, 34, 35, 36)</span></label>
+                    <label><input type="checkbox" value="37-40"> Coelho <span class="grupo-nome">(37, 38, 39, 40)</span></label>
+                    <label><input type="checkbox" value="41-44"> Cavalo <span class="grupo-nome">(41, 42, 43, 44)</span></label>
+                    <label><input type="checkbox" value="45-48"> Elefante <span class="grupo-nome">(45, 46, 47, 48)</span></label>
+                    <label><input type="checkbox" value="49-52"> Galo <span class="grupo-nome">(49, 50, 51, 52)</span></label>
+                    <label><input type="checkbox" value="53-56"> Gato <span class="grupo-nome">(53, 54, 55, 56)</span></label>
+                    <label><input type="checkbox" value="57-60"> Jacaré <span class="grupo-nome">(57, 58, 59, 60)</span></label>
+                    <label><input type="checkbox" value="61-64"> Leão <span class="grupo-nome">(61, 62, 63, 64)</span></label>
+                    <label><input type="checkbox" value="65-68"> Macaco <span class="grupo-nome">(65, 66, 67, 68)</span></label>
+                    <label><input type="checkbox" value="69-72"> Porco <span class="grupo-nome">(69, 70, 71, 72)</span></label>
+                    <label><input type="checkbox" value="73-76"> Pavão <span class="grupo-nome">(73, 74, 75, 76)</span></label>
+                    <label><input type="checkbox" value="77-80"> Peru <span class="grupo-nome">(77, 78, 79, 80)</span></label>
+                    <label><input type="checkbox" value="81-84"> Touro <span class="grupo-nome">(81, 82, 83, 84)</span></label>
+                    <label><input type="checkbox" value="85-88"> Tigre <span class="grupo-nome">(85, 86, 87, 88)</span></label>
+                    <label><input type="checkbox" value="89-92"> Urso <span class="grupo-nome">(89, 90, 91, 92)</span></label>
+                    <label><input type="checkbox" value="93-96"> Veado <span class="grupo-nome">(93, 94, 95, 96)</span></label>
+                    <label><input type="checkbox" value="97-00"> Vaca <span class="grupo-nome">(97, 98, 99, 00)</span></label>
+                </div>
+            </div>
+
+            <button class="button" onclick="gerarNumeros()">Gerar Números</button>
+        </div>
+
+        <div class="card resultado">
+            <h2>Resultado dos Números Gerados:</h2>
+            <p id="resultado-numeros">Nenhum número gerado ainda.</p>
+        </div>
+
+        <div class="card histórico">
+            <h2>Histórico de Apostas:</h2>
+            <div id="historico-apostas">Nenhuma aposta registrada ainda.</div>
+        </div>
+    </div>
+
+    <script>
+        function gerarNumeros() {
+            const quantidade = document.getElementById('quantidade').value;
+            const digitos = document.getElementById('digitos').value;
+            const checkboxes = document.querySelectorAll('.grupo-selecao input:checked');
+            const gruposSelecionados = [];
+
+            checkboxes.forEach((checkbox) => {
+                const numeros = checkbox.value.split('-');
+                gruposSelecionados.push(...numeros);
+            });
+
+            if (gruposSelecionados.length === 0) {
+                alert('Por favor, selecione ao menos um grupo.');
+                return;
+            }
+
+            const numerosGerados = [];
+            for (let i = 0; i < quantidade; i++) {
+                const numero = gruposSelecionados[Math.floor(Math.random() * gruposSelecionados.length)];
+                const numeroFinal = `${numero.padStart(2, '0')}${Math.floor(Math.random() * Math.pow(10, digitos - 2)).toString().padStart(digitos - 2, '0')}`;
+                numerosGerados.push(numeroFinal);
+            }
+
+            document.getElementById('resultado-numeros').innerText = numerosGerados.join(', ');
+
+            const historico = document.getElementById('historico-apostas');
+            const novaAposta = document.createElement('div');
+            novaAposta.innerText = `Aposta: ${numerosGerados.join(', ')}`;
+            historico.appendChild(novaAposta);
+        }
+    </script>
+</body>
+</html>
